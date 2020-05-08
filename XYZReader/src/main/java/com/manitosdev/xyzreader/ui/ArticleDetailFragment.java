@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package com.manitosdev.xyzreader.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,8 +26,8 @@ import androidx.palette.graphics.Palette;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
+import com.manitosdev.xyzreader.R;
+import com.manitosdev.xyzreader.data.ArticleLoader;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

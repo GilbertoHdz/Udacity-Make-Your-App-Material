@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package com.manitosdev.xyzreader.ui;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,10 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
-import com.example.xyzreader.data.UpdaterService;
+import com.manitosdev.xyzreader.R;
+import com.manitosdev.xyzreader.data.ArticleLoader;
+import com.manitosdev.xyzreader.data.ItemsContract;
+import com.manitosdev.xyzreader.data.UpdaterService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -5,6 +5,7 @@ android {
     buildToolsVersion "29.0.0"
 
     defaultConfig {
+        applicationId "com.mnitosdev.xyzreader"
         minSdkVersion 19
         targetSdkVersion 26
     }
@@ -21,5 +22,5 @@ dependencies {
 
     implementation "com.squareup.okhttp3:okhttp:3.1.2"
 
-    compile files("libs/volley.jar")
+    implementation files("libs/volley.jar")
 }

@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package com.manitosdev.xyzreader.ui;
 
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
@@ -17,9 +17,9 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
+import com.manitosdev.xyzreader.R;
+import com.manitosdev.xyzreader.data.ArticleLoader;
+import com.manitosdev.xyzreader.data.ItemsContract;
 
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.

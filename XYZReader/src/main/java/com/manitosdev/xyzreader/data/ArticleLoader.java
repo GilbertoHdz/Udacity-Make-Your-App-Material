@@ -1,4 +1,4 @@
-package com.example.xyzreader.data;
+package com.manitosdev.xyzreader.data;
 
 
 import android.content.Context;
