@@ -135,7 +135,6 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
-        // updateStatusBar();
         return mRootView;
     }
 
@@ -199,7 +198,6 @@ public class ArticleDetailFragment extends Fragment implements
                                 Palette p = Palette.generate(bitmap, 12);
                                 mMutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                // updateStatusBar();
                             }
                         }
 
@@ -248,9 +246,9 @@ public class ArticleDetailFragment extends Fragment implements
 
     public class DisplayTextFetcher extends AsyncTask<Void, Void, Spanned> {
 
-        private AppCompatTextView _tv;
+        private TextView _tv;
 
-        public DisplayTextFetcher(AppCompatTextView _tv) {
+        public DisplayTextFetcher(TextView _tv) {
             this._tv = _tv;
         }
 
