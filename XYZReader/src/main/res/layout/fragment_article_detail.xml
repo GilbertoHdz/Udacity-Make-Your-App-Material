@@ -21,13 +21,12 @@
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
                     android:id="@+id/photo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                     />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="112dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/photo_background_protection" />
 
             </FrameLayout>
@@ -35,7 +34,7 @@
             <com.manitosdev.xyzreader.ui.MaxWidthLinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:maxWidth="@dimen/detail_card_max_width"
                 android:background="#fff"
@@ -75,7 +74,7 @@
                         android:textColor="#8fff" />
                 </LinearLayout>
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/article_body"
                     style="?android:attr/textAppearanceMedium"
                     android:layout_width="match_parent"

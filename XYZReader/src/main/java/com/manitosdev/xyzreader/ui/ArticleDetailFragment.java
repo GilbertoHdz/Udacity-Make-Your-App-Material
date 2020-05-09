@@ -1,5 +1,6 @@
 package com.manitosdev.xyzreader.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -7,8 +8,11 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -18,7 +22,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.app.ShareCompat;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
@@ -206,7 +212,7 @@ public class ArticleDetailFragment extends Fragment implements
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        AppCompatTextView bodyView = (AppCompatTextView) mRootView.findViewById(R.id.article_body);
 
 
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
@@ -235,7 +241,9 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
+
+            new DisplayTextFetcher(bodyView).execute();
+
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -292,6 +300,43 @@ public class ArticleDetailFragment extends Fragment implements
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mCursor = null;
         bindViews();
+    }
+
+    public class DisplayTextFetcher extends AsyncTask<Void, Void, Spanned> {
+
+        private AppCompatTextView _tv;
+
+        public DisplayTextFetcher(AppCompatTextView _tv) {
+            this._tv = _tv;
+        }
+
+        @Override
+        protected Spanned doInBackground(Void... voids) {
+            final Spanned backgroundText = Html.fromHtml(
+                    mCursor.getString(
+                            ArticleLoader.Query.BODY
+                    ).replaceAll("(\r\n|\n)", "<br />")
+            );
+
+            return backgroundText;
+        }
+
+        @Override
+        protected void onPostExecute(final Spanned spanned) {
+            super.onPostExecute(spanned);
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        _tv.setText(spanned);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        _tv.setText("error to display text");
+                    }
+                }
+            });
+        }
     }
 
     public int getUpButtonFloor() {
